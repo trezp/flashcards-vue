@@ -18,31 +18,28 @@ li {
 .card {
   display: block;
   width: 100px;
-  height: 150px;
-  padding: 30px;
+  height: 125px;
+  padding: 50px 30px 30px 30px;
   border: 1px solid black;
   border-radius: 3px;
   margin: 5px;
+  text-align: center;
   cursor: pointer;
   position: relative;
-}
-
-.card p {
-  text-align: center;
+  -webkit-box-shadow: 9px 10px 22px -8px rgba(209,193,209,1);
+  -moz-box-shadow: 9px 10px 22px -8px rgba(209,193,209,1);
+  box-shadow: 9px 10px 22px -8px rgba(209,193,209,1);
 }
 
 .delete-card {
   position: absolute;
   right: 0;
   top: 0;
+  padding: 5px 10px;
 }
 
 .delete-card:hover, .error {
   color: red;
-}
-
-.material-icons {
-  vertical-align: middle;
 }
 
 .flip-enter-active {

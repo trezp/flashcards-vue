@@ -34,8 +34,7 @@ new Vue({
         this.cards.push({
           'front': this.newFront,
           'back': this.newBack,
-          'flipped': false,
-          'memorized': false
+          'flipped': false
         });
         this.newFront = '';
         this.newBack = '';

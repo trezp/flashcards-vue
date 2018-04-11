@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <title>Flash!</title>
 </head>
@@ -15,7 +13,7 @@
 
     <h1>Flashcard App!</h1>
 
-    <div>
+    <div class="flashcard-form">
       <label for="front">Front
         <input v-model="newFront" type="text" id="front">
       </label>
@@ -23,29 +21,20 @@
         <input v-on:keypress.enter="addNew" v-model="newBack" type="text" id="back">
       </label>
       <button v-on:click="addNew">Add a New Card</button>
-      <span class="error" v-if="error">Oops! Cards need a front and a back.</span>
-    </div>  
-    
-    <ul>
-      <li v-for="(card, index) in cards" 
-        v-on:click="toggleCard(card)">
-        <transition-group name="flip" tag="span" mode="out-in">    
-          <span class="card" v-bind:class="{memorized: card.memorized}" 
-            v-show="!card.flipped" 
-            v-bind:key="index">
-            <span class="delete-card" v-on:click="cards.splice(index, 1)">
-              <i class="material-icons">clear</i>
-            </span>
-            <p>{{card.front}}</p>
-          </span>
-          <span class="card" v-bind:class="{memorized: card.memorized}"
-            v-show="card.flipped" 
-            v-bind:key="index + 1">
-            <span class="delete-card" v-on:click="cards.splice(index, 1)">
-              <i class="material-icons">clear</i>
-            </span>
-            <p>{{card.back}}</p>
-          </span>
+      <span class="error" v-show="error">Oops! Flashcards need a front and a back.</span>
+    </div>
+
+    <ul class="flashcard-list">
+      <li v-for="(card, index) in cards" v-on:click="toggleCard(card)">
+        <transition-group name="flip" tag="span">
+          <p class="card" v-if="!card.flipped" v-bind:key="index">
+            {{card.front}}
+            <span class="delete-card" v-on:click="cards.splice(index, 1)">X</span>
+          </p>
+          <p class="card" v-else v-bind:key="index + 1">
+            {{card.back}}
+            <span class="delete-card" v-on:click="cards.splice(index, 1)">X</span>
+          </p>
         </transition-group>
       </li>
     </ul>
