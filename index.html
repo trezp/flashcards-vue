@@ -17,10 +17,10 @@
 
     <div>
       <label for="front">Front
-        <input v-model="cardFront" type="text" id="front">
+        <input v-model="newFront" type="text" id="front">
       </label>
       <label for="back">Back
-        <input v-on:keypress.enter="addNew" v-model="cardBack" type="text" id="back">
+        <input v-on:keypress.enter="addNew" v-model="newBack" type="text" id="back">
       </label>
       <button v-on:click="addNew">Add a New Card</button>
       <span class="error" v-if="error">Oops! Cards need a front and a back.</span>
@@ -37,14 +37,6 @@
               <i class="material-icons">clear</i>
             </span>
             <p>{{card.front}}</p>
-            <!-- <div class="check" v-on:click="memorized(card)">
-              <p v-if="!card.memorized">
-                <i  class="material-icons">check_box_outline_blank </i> I know it!
-              </p> 
-              <p v-else="card.memorized">
-                <i class="material-icons checked-box">check_box</i>
-              </p>
-            </div> -->
           </span>
           <span class="card" v-bind:class="{memorized: card.memorized}"
             v-show="card.flipped" 

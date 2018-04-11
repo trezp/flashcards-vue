@@ -21,8 +21,8 @@ new Vue({
   el: '#flashcard-app',
   data: {
     cards: cards,
-    cardFront: '',
-    cardBack: '',
+    newFront: '',
+    newBack: '',
     error: false
   },
   methods: {
@@ -30,15 +30,15 @@ new Vue({
       card.flipped = !card.flipped;
     },
     addNew: function(){
-      if(this.cardFront.length && this.cardBack.length){
+      if(this.newFront.length && this.newBack.length){
         this.cards.push({
-          'front': this.cardFront,
-          'back': this.cardBack,
+          'front': this.newFront,
+          'back': this.newBack,
           'flipped': false,
           'memorized': false
         });
-        this.cardFront = '';
-        this.cardBack = '';
+        this.newFront = '';
+        this.newBack = '';
         this.error = false;
       } else {
         this.error = true;
