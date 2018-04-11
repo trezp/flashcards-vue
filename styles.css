@@ -1,0 +1,55 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+ul {
+  padding-left: 0;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+li {
+  list-style-type: none;
+}
+
+.container {
+  max-width: 80%;
+  padding: 2em;
+}
+.card {
+  display: block;
+  width: 100px;
+  height: 150px;
+  padding: 30px;
+  border: 1px solid black;
+  border-radius: 3px;
+  margin: 5px;
+  cursor: pointer;
+  position: relative;
+}
+
+.card p {
+  text-align: center;
+}
+
+.delete-card {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.delete-card:hover, .error {
+  color: red;
+}
+
+.material-icons {
+  vertical-align: middle;
+}
+
+.flip-enter-active {
+  transition: all .4s ease;
+}
+
+.flip-enter, .flip-leave {
+  transform: rotateY(180deg);
+  opacity: 0;
+}
