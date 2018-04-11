@@ -30,7 +30,9 @@ new Vue({
       card.flipped = !card.flipped;
     },
     addNew: function(){
-      if(this.newFront.length && this.newBack.length){
+      if(!this.newFront.length || !this.newBack.length){
+        this.error = true;
+      } else {
         this.cards.push({
           'front': this.newFront,
           'back': this.newBack,
@@ -39,8 +41,6 @@ new Vue({
         this.newFront = '';
         this.newBack = '';
         this.error = false;
-      } else {
-        this.error = true;
       }
     }
   }
