@@ -1,3 +1,8 @@
+
+// Question: Did you intend for this be formatted as JSON?
+// Suggestion: You first example's data was so fun,
+// maybe you could come up with some fun trivia questions
+// for your sample data?
 const cards = [
   {
     'front': 'Front of card 1',
@@ -15,7 +20,7 @@ const cards = [
     'back': 'Back of card 3',
     'flipped': false,
   },
-] 
+];
 
 new Vue({
   el: '#flashcard-app',
@@ -30,9 +35,15 @@ new Vue({
       card.flipped = !card.flipped;
     },
     addNew: function(){
+      // Question: Do you need to check the 'length' property here?
+      // Does this work just as well?
+      // if(!this.newFront || !this.newBack){
       if(!this.newFront.length || !this.newBack.length){
         this.error = true;
       } else {
+        // Suggestion: If you didn't intend to format your data
+        // as JSON, you could remove the single quotes around
+        // your property names here.
         this.cards.push({
           'front': this.newFront,
           'back': this.newBack,
