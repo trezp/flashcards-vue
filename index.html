@@ -18,6 +18,7 @@
         <input v-model="newFront" type="text" id="front">
       </label>
       <label for="back">Back
+        <!-- Compliment: Nice use of a key modifier! -->
         <input v-on:keypress.enter="addNew" v-model="newBack" type="text" id="back">
       </label>
       <button v-on:click="addNew">Add a New Card</button>
@@ -25,12 +26,31 @@
     </div>
 
     <ul class="flashcard-list">
+      <!-- Potential Error: Shouldn't the v-bind:key="index"
+        binding go here on the li element? -->
       <li v-for="(card, index) in cards" v-on:click="toggleCard(card)">
         <transition-group name="flip" tag="span">
+          <!-- Discussion: As you mentioned during our chat, 
+            you could consider using v-show here instead of v-if... 
+            though it's nice to have an example v-if v-else. -->
+          <!-- Question: I'm not sure about using the item's index
+            for the 'key'... the item's index will change as you add
+            and remove items from the array, so I wonder if that 
+            defeats the purpose of using a key here. I *think* 
+            the key is supposed to be a constant value, so Vue
+            can reliably use it to identify an item in the list. 
+            Also, as my above comment mentions, I think the key
+            binding doesn't belong here. -->
           <p class="card" v-if="!card.flipped" v-bind:key="index">
             {{card.front}}
             <span class="delete-card" v-on:click="cards.splice(index, 1)">X</span>
           </p>
+          <!-- Potential Error: I don't think it works to add one 
+            to the index value. Wouldn't that overlap with the 
+            index value of the next item? Also, as my above comment
+            mentions, I think the key binding doesn't belong here.
+            If you move it up to the li element then this issue is
+            a moot point. -->
           <p class="card" v-else v-bind:key="index + 1">
             {{card.back}}
             <span class="delete-card" v-on:click="cards.splice(index, 1)">X</span>
