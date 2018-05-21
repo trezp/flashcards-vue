@@ -15,10 +15,10 @@
 
     <div class="flashcard-form">
       <label for="front">Front
-        <input v-model="newFront" type="text" id="front">
+        <input v-model.trim="newFront" type="text" id="front">
       </label>
       <label for="back">Back
-        <input v-on:keypress.enter="addNew" v-model="newBack" type="text" id="back">
+        <input v-on:keypress.enter="addNew" v-model.trim="newBack" type="text" id="back">
       </label>
       <button v-on:click="addNew">Add a New Card</button>
       <span class="error" v-show="error">Oops! Flashcards need a front and a back.</span>
@@ -47,8 +47,8 @@
               <span class="delete-card" v-on:click="cards.splice(index, 1)">X</span>
             </p>
         </transition>
-      </li> -->
-    </ul>
+      </li>
+    </ul> -->
     
   </div>
 

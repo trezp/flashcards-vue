@@ -43,7 +43,7 @@ li {
 }
 
 .flip-enter-active {
-  transition: all .4s ease;
+  transition-duration: .4s;
 }
 
 .flip-enter, .flip-leave {
